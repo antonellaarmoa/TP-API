@@ -1,0 +1,958 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@100..800&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+:root{
+  --color1: #000;
+  --color2:#fff;
+  --rojo_fuerte: #350A0A;
+  --rojo_claro: #993333;
+  --botones: #6D1111;
+  --primaryColor:#6D1111;
+  --hoverColor: #993333;
+  --paleGreen: #993333;
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(0, 0%, 18%);
+  --greyText: hsl(0, 0%, 75%);
+  --bgColor: #350A0A;
+  --inputColor: hsl(330, 12%, 97%);
+  /*Font*/
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 1.5rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: .938rem;
+  --smallFontSize: .813rem;
+  --smallestFontSize: .75rem;
+}
+
+/*HOME*/
+.App {
+  background-color: var(--rojo_fuerte);
+  color: white;
+  font-family: sans-serif;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'PT Sans', sans-serif;
+}
+
+
+.home {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+
+body {
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+
+  background-color: 
+  #420001;
+}
+/*contenedor de watchlist, watched y favorites*/
+.container-listas {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.cards {
+    display: inline-block;
+    transition: transform .2s;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.19rem;
+    cursor:pointer;
+    min-width:200px;
+    height:300px;
+    z-index:0;
+    border: 1px solid rgb(99, 99, 99);
+}
+
+.cards:hover {
+    transform: scale(1.0);
+    z-index: 1000;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.cards__img {
+    height: 300px;
+}
+
+.cards__overlay {
+  position: absolute;
+  padding: 0 1rem 1rem 1rem;
+  bottom: 0px;
+  height: 290px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-end;
+  background-image: linear-gradient(rgb(0,0,0,0), rgb(0,0,0,1));
+  opacity: 0;
+  transition: opacity .2s;
+}   
+
+.cards__overlay:hover {
+    opacity: 1;
+}
+
+.card__title {
+    font-weight: 900;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.card__runtime {
+    font-size: .75rem;
+    margin-bottom: 0.25rem;
+}
+
+.card__rating {
+    float: right;
+}
+
+/*Siendo 1 en pantalla*/
+@media(min-width: 200px) and (max-width: 600px){
+  
+  .ctrl-btn i {
+    font-size: 0.8rem;
+    padding: 1px;
+    margin: 2px;
+  }
+
+  .container-listas {
+    width: 100%;
+  }
+ 
+  .cards {
+    display: block;
+    width: 230px;
+    margin-left: 100px;
+  }
+  .movie-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+
+  }
+  ul.nav-links{
+    background-color: none;
+  }
+  
+  header .nav-links {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    background-color: none;
+  }
+  
+  header .nav-links li {
+    display: inline-block;
+    list-style: none;
+    background-color: none;
+    margin-right: 30px;
+  }
+  
+  header .nav-links li:last-child {
+    margin-right: 0;
+  }
+}
+
+/*De 2 pelis*/
+@media (min-width: 600px) and (max-width:700px){
+  .container-listas {
+    width: 100%;
+  }
+  .movie-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ctrl-btn i {
+    font-size: 0.8rem;
+    padding: 1px;
+    margin: 0;
+  }
+  ul.nav-links{
+    background-color: none;
+  }
+  
+  header .nav-links {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    background-color: none;
+  }
+  
+  header .nav-links li {
+    display: inline-block;
+    list-style: none;
+    background-color: none;
+    margin-right: 30px;
+  }
+  
+  header .nav-links li:last-child {
+    margin-right: 0;
+  }
+
+}
+
+/*4 PELICULAS*/
+@media (min-width: 700px) and (max-width: 1000px){
+  .container-listas {
+    width: 100%;
+    
+  }
+  .movie-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .ctrl-btn i {
+    font-size: 0.8rem;
+    padding: 1px;
+    margin: 0;
+  }
+  ul.nav-links{
+    background-color: none;
+  }
+  
+  header .nav-links {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    background-color: none;
+  }
+  
+  header .nav-links li {
+    display: inline-block;
+    list-style: none;
+    background-color: none;
+    margin-right: 30px;
+  }
+  
+  header .nav-links li:last-child {
+    margin-right: 0;
+  }
+
+}
+
+@media (min-width: 1000px) and (max-width: 1200px){
+  .container-listas {
+    width: 100%;
+    
+  }
+  .movie-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .ctrl-btn i {
+    font-size: 0.8rem;
+    padding: 1px;
+    margin: 0;
+  }
+  ul.nav-links{
+    background-color: none;
+  }
+  
+  header .nav-links {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    background-color: none;
+  }
+  
+  header .nav-links li {
+    display: inline-block;
+    list-style: none;
+    background-color: none;
+    margin-right: 30px;
+  }
+  
+  header .nav-links li:last-child {
+    margin-right: 0;
+  }
+
+}
+
+
+@media (min-width:1200px) {
+ 
+  .container-listas {
+    width: 100%;
+    
+  }
+  .movie-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  ul.nav-links{
+    background-color: none;
+  }
+  
+  header .nav-links {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    background-color: none;
+  }
+  
+  header .nav-links li {
+    display: inline-block;
+    list-style: none;
+    background-color: none;
+    margin-right: 30px;
+  }
+  
+  header .nav-links li:last-child {
+    margin-right: 0;
+  }
+}
+
+@media (min-width:1500px) {
+ 
+  .container-listas {
+    width: 100%;
+    
+  }
+  .movie-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  ul.nav-links{
+    background-color: none;
+  }
+  
+  header .nav-links {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    background-color: none;
+  }
+  
+  header .nav-links li {
+    display: inline-block;
+    list-style: none;
+    background-color: none;
+    margin-right: 30px;
+  }
+  
+  header .nav-links li:last-child {
+    margin-right: 0;
+  }
+}
+
+
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+.btn {
+  padding: 10px 15px;
+  background-color: var(--secondary);
+  color: var(--primary);
+  
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block;
+  border: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  line-height: 1.1;
+}
+
+.btn:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.btn:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Header de Watchlist */
+header {
+  background-color: var(--primaryColor);
+  
+  
+}
+
+header .inner-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: none;
+  padding: 10px 0;
+}
+
+header a {
+  font-size: 1.25rem;
+  text-decoration: none;
+  background-color: none;
+  color: #fefefe;
+  transition: all 0.3s ease;
+
+}
+
+header a:hover {
+  opacity: 0.7;
+  background-color: rgba(164, 90, 90, 0.649);
+  padding: 5px;
+}
+
+header .brand a {
+  font-weight: 700;
+  font-size: 1.5rem;
+  background-color: none;
+}
+
+ul.nav-links{
+  background-color: none;
+}
+
+header .nav-links {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  background-color: none;
+}
+
+header .nav-links li {
+  display: inline-block;
+  list-style: none;
+  background-color: none;
+  margin-right: 30px;
+}
+
+header .nav-links li:last-child {
+  margin-right: 0;
+}
+
+
+.results {
+  padding: 0;
+  margin: 0;
+  margin-top: 20px;
+}
+
+.results li {
+  list-style: none;
+}
+
+.result-card {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.result-card .poster-wrapper img,
+.filler-poster {
+  width: 75px;
+  height: 113px;
+  border-radius: 5px;
+  margin-right: 15px;
+  display: block;
+  color: transparent;
+}
+
+.result-card .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.result-card .info .title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.result-card .info .release-date {
+  font-size: 1.25rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.result-card .controls button {
+  margin-right: 10px;
+  background-color: var(--botones);
+  margin: 8px;
+  transition: var(--rojo_fuerte) 0.3s ease; 
+}
+
+.result-card .controls button:hover {
+  background-color: var(--hoverColor); 
+}
+
+/* Movie Page */
+.movie-page {
+  padding: 30px 0;
+}
+
+.movie-page .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.count-pill {
+  display: block;
+  background-color: var(--rojo_fuerte);
+  padding: 5px 15px;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 999px;
+  color: var(--color2);
+}
+
+.movie-page .heading {
+  color: var(--color2);
+  margin: 0;
+}
+
+.movie-grid {
+  display: grid;
+  
+  grid-gap: 30px;
+  
+}
+
+
+
+.movie-card {
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+  border: 0;
+  display: block;
+  padding-bottom: 50px;
+}
+.card__description {
+    font-style: italic;
+    font-size: .75rem;
+    margin-bottom: 0.25rem;
+}
+
+.movie-card img {
+  width: 100%;
+  display:block;
+}
+
+.movie-card .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.movie-card:hover .overlay {
+  border: 3px solid #350a0a1e;
+}
+
+.controles {
+  display: block;
+  visibility: visible;
+}
+
+.movie-card .card-controls {
+  display: inline;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-image: rgb(0, 0, 0);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.movie-card:hover .card-controls {
+  opacity: 1;
+}
+/*botones del watchlist*/
+.ctrl-btn {
+  
+  background-color: rgb(222, 205, 205);
+  border-color: var(--color1);
+  font-size: 1.1rem;
+  padding: 5px;
+  border-radius: 70%;
+  margin: 0;
+}
+.ctrl-btn i.fa {
+  visibility: visible;
+  
+}
+/*cuando le pasas por arriba*/
+
+.ctrl-btn:hover {
+  color: var(--color2);
+  background-color:#ae3131d6;
+  border-color: var(--color2);
+  cursor: pointer;
+}
+
+/*texto cuando no hay peliculas en la pagina*/
+
+.movie-page .no-movies {
+  color: var(--hoverColor);
+  font-size: 3rem;
+  text-align: center;
+}
+
+
+
+/*INICIO Y REGISTRO*/
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+html {
+  font-size: 90%;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.icon {
+  font-size: var(--h2FontSize);
+  cursor: pointer;
+}
+
+img, video {
+  height: auto;
+  width: 100%;
+}
+
+.message {
+  display: none;
+}
+
+.showMessage {
+  display: block;
+  color: var(--whiteColor);
+  padding: 10px;
+  background: rgb(255, 0, 0);
+  border-radius: 3px;
+  text-align: center;
+}
+
+.showMessage {
+  display: block;
+  color: var(--whiteColor);
+  background: rgb(255, 0, 0);
+  border-radius: 3px;
+  text-align: center;
+}
+
+.btn-inico {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  color: var(--greyText);
+}
+
+.btn-inico .icon {
+  margin-left: 0.5rem;
+}
+
+.btn-inico:hover {
+  color: var(--primaryColor);
+  background: var(--paleGreen);
+}
+
+.warning{
+  width: 300px;
+  text-align: center;
+  margin: auto;
+  color: #993333;
+ 
+}
+
+
+
+.loginPage, .registerPage {
+  height: 100vh;
+  width: 100%;
+  margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
+  background: linear-gradient(-45deg, #993333, #350A0A);
+  box-shadow: 0 7px 50px rgb(214, 223, 213);
+}
+.loginPage .container, .registerPage .container {
+  height: 75vh;
+  width: 60%;
+  margin: auto;
+  justify-content: space-between;
+  border-radius: 10px;
+  background: hsl(0, 0%, 91%);
+}
+.loginPage .container .videoDiv, .registerPage .container .videoDiv {
+  position: relative;
+  display: flex;
+  flex-basis: 50%;
+  width: 70%;
+  height: 100%;
+  padding: 0 1.5rem;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.loginPage .container .videoDiv video, .loginPage .container .videoDiv .footerDiv, .registerPage .container .videoDiv video, .registerPage .container .videoDiv .footerDiv {
+  position: absolute;
+}
+.loginPage .container .videoDiv video, .registerPage .container .videoDiv video {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+.loginPage .container .videoDiv .textDiv, .registerPage .container .videoDiv .textDiv {
+  position: relative;
+}
+.loginPage .container .videoDiv .textDiv .title, .registerPage .container .videoDiv .textDiv .title {
+  color: var(--whiteColor);
+  font-size: 35px;
+  font-weight: 800;
+}
+.loginPage .container .videoDiv .textDiv p, .registerPage .container .videoDiv .textDiv p {
+  color: var(--whiteColor);
+  padding: 1rem;
+  font-weight: 400;
+}
+.loginPage .container .videoDiv .footerDiv, .registerPage .container .videoDiv .footerDiv {
+  bottom: 10px;
+  padding: 0 1rem;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.248);
+  left: 10px;
+  right: 10px;
+  justify-content: space-between;
+  -webkit-backdrop-filter: blur(1px);
+          backdrop-filter: blur(1px);
+  border-radius: 10px;
+}
+.loginPage .container .videoDiv .footerDiv .text, .registerPage .container .videoDiv .footerDiv .text {
+  color: var(--whiteColor);
+}
+.loginPage .container .videoDiv .footerDiv .btn, .registerPage .container .videoDiv .footerDiv .btn {
+  background: var(--whiteColor);
+  color: var(--primaryColor);
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 400;
+  transition: 0.3s ease;
+}
+.loginPage .container .videoDiv .footerDiv .btn:hover, .registerPage .container .videoDiv .footerDiv .btn:hover {
+  background: var(--hoverColor);
+  color: var(--blackColor);
+}
+.loginPage .container .fromDiv, .registerPage .container .fromDiv {
+  flex-basis: 50%;
+  margin: auto;
+  flex-direction: column;
+  gap: 1.5rem;
+  transform: translateY(-1rem);
+}
+.loginPage .container .fromDiv .headerDiv, .registerPage .container .fromDiv .headerDiv {
+  text-align: center;
+  padding: 1rem 0;
+}
+.loginPage .container .fromDiv .headerDiv img, .registerPage .container .fromDiv .headerDiv img {
+  width: 60px;
+  padding-bottom: 0.5rem;
+}
+.loginPage .container .fromDiv .headerDiv h3, .registerPage .container .fromDiv .headerDiv h3 {
+  font-size: 25px;
+  color: var(--blackColor);
+  font-weight: 600;
+}
+.loginPage .container .fromDiv .form, .registerPage .container .fromDiv .form {
+  gap: 1rem;
+}
+.loginPage .container .fromDiv .form .inputDiv .icon, .registerPage .container .fromDiv .form .inputDiv .icon {
+  color: var(--greyText);
+}
+.loginPage .container .fromDiv .form .inputDiv input, .registerPage .container .fromDiv .form .inputDiv input {
+  background: none;
+  outline: none;
+  border: none;
+  width: 300px;
+}
+.loginPage .container .fromDiv .form .inputDiv label, .registerPage .container .fromDiv .form .inputDiv label {
+  color: var(--blackColor);
+  font-weight: 400;
+  font-size: 14px;
+  padding: 0.5rem 0;
+  display: block;
+}
+.loginPage .container .fromDiv .form .inputDiv .input, .registerPage .container .fromDiv .form .inputDiv .input {
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--inputColor);
+  border-radius: 10px;
+}
+.loginPage .container .fromDiv .form .btn, .registerPage .container .fromDiv .form .btn {
+  padding: 0.8rem;
+  background: var(--primaryColor);
+  border-radius: 10px;
+  color: var(--whiteColor);
+  align-items: center;
+  margin: auto;
+  justify-content: center;
+  font-size: 16px;
+  width: 100%;
+  gap: 0.5rem;
+  transition: 0.3s ease;
+}
+.loginPage .container .fromDiv .form .btn .icon, .registerPage .container .fromDiv .form .btn .icon {
+  font-size: 25px;
+  transition: 0.3s ease;
+}
+.loginPage .container .fromDiv .form .btn:hover, .registerPage .container .fromDiv .form .btn:hover {
+  background: var(--hoverColor);
+  color: var(--blackColor);
+}
+.loginPage .container .fromDiv .form .btn:hover .icon, .registerPage .container .fromDiv .form .btn:hover .icon {
+  color: var(--blackColor);
+  transform: translateX();
+}
+.loginPage .container .fromDiv .form .forgotPassword, .registerPage .container .fromDiv .form .forgotPassword {
+  font-size: 13px;
+  color: var(--blackColor);
+  opacity: 0.7;
+  text-align: center;
+}
+.loginPage .container .fromDiv .form .forgotPassword a, .registerPage .container .fromDiv .form .forgotPassword a {
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: 1;
+}
+
+@media screen and (max-width: 602px) {
+  .loginPage .container, .registerPage .container {
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+  .loginPage .container .videoDiv, .registerPage .container .videoDiv {
+    width: 100%;
+  }
+  .loginPage .container .videoDiv .textDiv .title, .registerPage .container .videoDiv .textDiv .title {
+    font-size: 20px;
+  }
+  .loginPage .container .videoDiv .textDiv p, .registerPage .container .videoDiv .textDiv p {
+    padding: 0.8rem;
+  }
+  .loginPage .container .videoDiv .footerDiv .text, .registerPage .container .videoDiv .footerDiv .text {
+    font-size: 12px;
+  }
+  .loginPage .container .videoDiv .footerDiv .btn, .registerPage .container .videoDiv .footerDiv .btn {
+    padding: 0.4rem 1.5rem;
+  }
+  .loginPage .container .fromDiv, .registerPage .container .fromDiv {
+    gap: 1rem;
+    transform: translateY(-0.5rem);
+  }
+  .loginPage .container .fromDiv .headerDiv, .registerPage .container .fromDiv .headerDiv {
+    padding: 1rem 0;
+  }
+  .loginPage .container .fromDiv .headerDiv img, .registerPage .container .fromDiv .headerDiv img {
+    width: 40px;
+  }
+  .loginPage .container .fromDiv .headerDiv h3, .registerPage .container .fromDiv .headerDiv h3 {
+    font-size: 20px;
+  }
+  .loginPage .container .fromDiv .form, .registerPage .container .fromDiv .form {
+    gap: 0.5rem;
+  }
+  .loginPage .container .fromDiv .form .inputDiv input, .registerPage .container .fromDiv .form .inputDiv input {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 678px) {
+  .loginPage .container .videoDiv .textDiv .title, .registerPage .container .videoDiv .textDiv .title {
+    font-size: 25px;
+  }
+  .loginPage .container .videoDiv .textDiv p, .registerPage .container .videoDiv .textDiv p {
+    padding: 1rem;
+  }
+  .loginPage .container .videoDiv .footerDiv .text, .registerPage .container .videoDiv .footerDiv .text {
+    font-size: 12px;
+  }
+  .loginPage .container .videoDiv .footerDiv .btn, .registerPage .container .videoDiv .footerDiv .btn {
+    padding: 0.5rem 1.5rem;
+  }
+  .loginPage .container .fromDiv .headerDiv, .registerPage .container .fromDiv .headerDiv {
+    padding: 1.5rem 0;
+  }
+  .loginPage .container .fromDiv .headerDiv h3, .registerPage .container .fromDiv .headerDiv h3 {
+    font-size: 20px;
+  }
+  .loginPage .container .fromDiv .form .inputDiv input, .registerPage .container .fromDiv .form .inputDiv input {
+    width: 100%;
+    max-width: 200px;
+  }
+}
+@media screen and (max-width: 927px) {
+  .loginPage .container, .registerPage .container {
+    width: 85%;
+  }
+}
+
